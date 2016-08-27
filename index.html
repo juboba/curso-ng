@@ -3,14 +3,22 @@
     <head>
         <meta charset="UTF-8"/>
         <title>Document</title>
+        <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
         <script src="node_modules/angular/angular.js"></script>
     </head>
     <body ng-app>
-        <div>
-            Mi nombre: <input ng-model="miNombre" type="text" value=""/>
+        <div class="row">
+            <div class="col-md-2">
+                Mi nombre: 
+            </div>
+            <div class="col-md-10">
+                <input ng-model="miNombre" class="form-control" type="text" value=""/>
+            </div>
         </div>
-        <div>
-            ¡Hola Angular, mi nombre es <b>{{ miNombre }}</b>!
+        <div class="row">
+            <div class="col-md-12">
+                ¡Hola Angular, mi nombre es <b>{{ miNombre }}</b>!
+            </div>
         </div>
     </body>
 </html>
