@@ -9,12 +9,6 @@
         </tr>
     </thead>
     <tbody>
-        <!-- Recorremos los emails y mostramos la misma información que
-             teníamos antes estática.
-             La opción track by se usa para que Angular no tenga que inyectar
-             un índice (`$$hashKey`) y use un atributo del objeto (que sabemos
-             único) para indexar.
-           -->
         <tr ng-repeat="email in $ctrl.emails track by email.id">
             <td ng-bind="email.asunto"></td>
             <td ng-bind="email.remitente"></td>
