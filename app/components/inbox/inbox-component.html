@@ -1,0 +1,27 @@
+<h1 ng-bind="'Inbox'"></h1>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <td ng-bind="'Asunto'"></td>
+            <td ng-bind="'Remitente'"></td>
+            <td ng-bind="'Fecha/hora'"></td>
+            <td ng-bind="'Acciones'"></td>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Recorremos los emails y mostramos la misma información que
+             teníamos antes estática.
+             La opción track by se usa para que Angular no tenga que inyectar
+             un índice (`$$hashKey`) y use un atributo del objeto (que sabemos
+             único) para indexar.
+           -->
+        <tr ng-repeat="email in $ctrl.emails track by email.id">
+            <td ng-bind="email.asunto"></td>
+            <td ng-bind="email.remitente"></td>
+            <td ng-bind="email.fecha"></td>
+            <td>
+                <button class="btn btn-default" ng-bind="'Eliminar'"></button>
+            </td>
+        </tr>
+    </tbody>
+</table>
