@@ -3,8 +3,14 @@
     <head>
         <meta charset="UTF-8"/>
         <title>Document</title>
+        <script src="node_modules/angular/angular.js"></script>
     </head>
-    <body>
-        
+    <body ng-app>
+        <div>
+            Mi nombre: <input ng-model="miNombre" type="text" value=""/>
+        </div>
+        <div>
+            ¡Hola Angular, mi nombre es <b>{{ miNombre }}</b>!
+        </div>
     </body>
 </html>
