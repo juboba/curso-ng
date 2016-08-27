@@ -43,11 +43,17 @@
                     <div class="row">
                         <div class="col-sm-12 header">
                         </div>
-                        <div class="col-sm-12">
+                        <!-- Agregamos un 'controlador' para este elemento. Usamos la sintaxis 'Controller as ref'
+                             para usar el contexto (this) del controlador como ViewModel. De esta manera no
+                             necesitamos inyectar un `$scope`. -->
+                        <div class="col-sm-12" ng-controller="inboxCtrl as inbox">
                             <h1>Inbox</h1>
                             <table class="table table-striped table-hover">
                                 <thead>
                                     <tr>
+                                        <!-- En lugar de poner texto estático hemos usado la directiva
+                                             `ng-bind` pensando en aplicar angular-translate
+                                             (lo haremos al final).-->
                                         <td ng-bind="'Asunto'"></td>
                                         <td ng-bind="'Remitente'"></td>
                                         <td ng-bind="'Fecha/hora'"></td>
@@ -55,36 +61,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td ng-bind="'Aprender AngularJS'"></td>
-                                        <td ng-bind="'Rudolph Hess'"></td>
-                                        <td ng-bind="'17 de agosto de 1987'"></td>
+                                    <!-- Recorremos los emails y mostramos la misma información que
+                                         teníamos antes estática. -->
+                                    <tr ng-repeat="email in inbox.emails track by email.id">
+                                        <td ng-bind="email.asunto"></td>
+                                        <td ng-bind="email.remitente"></td>
+                                        <td ng-bind="email.fecha"></td>
                                         <td>
-                                            <button class="btn btn-default">Eliminar</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td ng-bind="'Aprender AngularJS'"></td>
-                                        <td ng-bind="'Rudolph Hess'"></td>
-                                        <td ng-bind="'17 de agosto de 1987'"></td>
-                                        <td>
-                                            <button class="btn btn-default">Eliminar</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td ng-bind="'Aprender AngularJS'"></td>
-                                        <td ng-bind="'Rudolph Hess'"></td>
-                                        <td ng-bind="'17 de agosto de 1987'"></td>
-                                        <td>
-                                            <button class="btn btn-default">Eliminar</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td ng-bind="'Aprender AngularJS'"></td>
-                                        <td ng-bind="'Rudolph Hess'"></td>
-                                        <td ng-bind="'17 de agosto de 1987'"></td>
-                                        <td>
-                                            <button class="btn btn-default">Eliminar</button>
+                                            <button class="btn btn-default" ng-bind="'Eliminar'"></button>
                                         </td>
                                     </tr>
                                 </tbody>
