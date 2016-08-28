@@ -1,0 +1,33 @@
+<!-- Por defecto, un componente define un 'controllerAs' llamado $ctrl.
+     Por lo que podemos acceder a su contexto a través de esta variable.
+     Los bindings son parte de este contexto:
+   -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <b ng-bind="'Remitente'"></b>:
+            <span ng-bind="$ctrl.mail.remitente">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <b ng-bind="'Fecha de envío'"></b>:
+            <!-- Agregamos un filtro para mostrar la fecha formateada:
+                 Más informacion sobre este filtro en:
+                    https://docs.angularjs.org/api/ng/filter/date
+               -->
+            <span ng-bind="$ctrl.mail.fecha | date">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <b ng-bind="'Asunto'"></b>:
+            <span ng-bind="$ctrl.mail.asunto"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <pre ng-bind="$ctrl.mail.cuerpo"></pre>
+        </div>
+    </div>
+</div>
