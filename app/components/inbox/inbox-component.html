@@ -10,7 +10,13 @@
     </thead>
     <tbody>
         <tr ng-repeat="email in $ctrl.emails track by email.id">
-            <td ng-bind="email.asunto"></td>
+            <!-- Cambiamos el binding a un elemento `<a>` para permitir la
+                 navegación a un email específico.
+                 Ver 'router.js' para definición de la nueva ruta.
+                 Usamos `ng-href` ver explicación en documentación oficial:
+                    https://docs.angularjs.org/api/ng/directive/ngHref
+               -->
+            <td><a ng-href="/#/mail/{{email.id}}" ng-bind="email.asunto"></a></td>
             <td ng-bind="email.remitente"></td>
             <td ng-bind="email.fecha"></td>
             <td>

@@ -1,9 +1,5 @@
 angular
     .module('clienteCorreo')
-/*
- * Agregamos un bloque de configuración (puede haber múltiples en una aplicación)
- * para configurar las rutas:
- */
     .config(function($routeProvider) {
         $routeProvider
 
@@ -11,12 +7,24 @@ angular
                 template: '<cc-inbox></cc-inbox>'
             })
 
-            .when('/mail', {
-                template: 'Hello Mail!'
+        /*
+         * Agregamos una ruta con un parámetro `id` que vamos a usar para
+         * Encontrar el mail específico:
+         */
+            .when('/mail/:id', {
+                template: 'Hello Mail {{mail.routeId}}!',
+                controller: function($routeParams) {
+                    this.routeId = $routeParams.id;
+                },
+                /*
+                 * Notar que usamos (al igual que cuando usamos un controlador
+                 * solo) la sintaxis 'controller as'.
+                 * Anteriormente: `ng-controller="someCtrl as some"` en la vista
+                 * Ahora: controllerAs: 'some' en la definición de la ruta.
+                 * Ambos producen el mismo resultado.
+                 */
+                controllerAs: 'mail'
             })
 
-            /*
-            Establece una ruta por defecto:
-            */
             .otherwise('/inbox');
     });
