@@ -5,7 +5,11 @@
         <title>Cliente de Correo</title>
         <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
         <script type="text/javascript" src="node_modules/angular/angular.js"></script>
+        <!-- Agregamos angular-route como enrutador: -->
+        <script type="text/javascript" src="node_modules/angular-route/angular-route.js"></script>
+
         <script type="text/javascript" src="app/main.js"></script>
+        <script type="text/javascript" src="app/router.js"></script>
 
         <script type="text/javascript" src="app/services/mail-service.js"></script>
 
@@ -39,20 +43,26 @@
                         <img alt="clienteCorreo" src="assets/img/logo.png"/>
                     </div>
                     <h3>Bandejas de Correo</h3>
-                    <button type="button" class="btn btn-default btn-md btn-block">Inbox</button>
-                    <button type="button" class="btn btn-default btn-md btn-block">Enviados</button>
+                    <!-- Nótese que hemos cambiado los botones por vínculos normales.
+                         Seguimos aprovechando el estilo de bootstrap.
+                         Las rutas deben tener esta forma: `/#/<ruta>` a menos que
+                         se configure de otra forma.
+                       -->
+                    <a class="btn btn-default btn-md btn-block" href="/#/inbox">Inbox</a>
+                    <a class="btn btn-default btn-md btn-block" href="/#/mail">Enviados</a>
                 </div>
                 <div class="col-sm-9 container-fluid">
                     <div class="row">
                         <div class="col-sm-12 header">
                         </div>
                         <div class="col-sm-12">
-                            <cc-inbox></cc-inbox>
+                            <!-- Reemplazamos el componente por un 'placeholder' para nuestras vistas
+                               parciales:-->
+                            <div ng-view></div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </body>
 </html>
