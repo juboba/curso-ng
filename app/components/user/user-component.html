@@ -1,0 +1,39 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="row">
+                <div class="col-sm-12">
+                    <b ng-bind="'Nombre'"></b>:
+                    <span ng-bind="$ctrl.user.nombres"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <b ng-bind="'Apellidos'"></b>:
+                    <span ng-bind="$ctrl.user.apellidos"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <b ng-bind="'Teléfono'"></b>:
+                    <span ng-bind="$ctrl.user.telefono"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <b ng-bind="'Dirección'"></b>:
+                    <span ng-bind="$ctrl.user.direccion"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <b ng-bind="'Email'"></b>:
+                    <span ng-bind="$ctrl.user.email"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <img alt="Imágen de perfil" ng-src="{{$ctrl.user.imagen}}"/>
+        </div>
+    </div>
+</div>

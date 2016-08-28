@@ -8,14 +8,19 @@ angular
             })
 
             .when('/mail/:id', {
-                /*
-                 * Ahora pasamos el objeto resuelto a nuestro nuevo componente
-                 * que mostrará el detalle del correo:
-                 */
                 template: '<cc-mail mail-details="$resolve.mail"></cc-mail>',
                 resolve: {
                     mail: function(mailSrv, $route) {
                         return mailSrv.getOne($route.current.params.id);
+                    }
+                }
+            })
+
+            .when('/user/:id', {
+                template: '<cc-user user-details="$resolve.user"></cc-user>',
+                resolve: {
+                    user: function(userSrv, $route) {
+                        return userSrv.getOne($route.current.params.id);
                     }
                 }
             })

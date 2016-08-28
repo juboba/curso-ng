@@ -10,10 +10,12 @@
     </thead>
     <tbody>
         <tr ng-repeat="email in $ctrl.emails track by email.id">
-            <td><a ng-href="/#/mail/{{email.id}}" ng-bind="email.asunto"></a></td>
-            <td ng-bind="email.remitente"></td>
-            <!-- Agregamos el filtro `date` descrito en el componente mail.
-            -->
+            <td>
+                <a ng-href="/#/mail/{{email.id}}" ng-bind="email.asunto"></a>
+            </td>
+            <td>
+                <a ng-href="/#/user/{{email.user_id}}" ng-bind="email.remitente"></a>
+            </td>
             <td ng-bind="email.fecha | date"></td>
             <td>
                 <button class="btn btn-default" ng-bind="'Eliminar'"></button>
