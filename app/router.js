@@ -4,7 +4,21 @@ angular
         $routeProvider
 
             .when('/inbox', {
-                template: '<cc-inbox></cc-inbox>'
+                template: '<cc-inbox title="Inbox" mails="$resolve.mails"></cc-inbox>',
+                resolve: {
+                    mails: function(mailSrv) {
+                        return mailSrv.getAll();
+                    }
+                }
+            })
+
+            .when('/outbox', {
+                template: '<cc-inbox title="Outbox" mails="$resolve.mails"></cc-inbox>',
+                resolve: {
+                    mails: function(mailSrv) {
+                        return mailSrv.getAllSent();
+                    }
+                }
             })
 
             .when('/mail/:id', {
@@ -26,7 +40,15 @@ angular
             })
 
             .when('/compose', {
-                template: '<cc-composer></cc-composer>'
+                template: '<cc-composer sender-email="$resolve.email"></cc-composer>',
+                resolve: {
+                    email: function(userSrv) {
+                        return userSrv.getOne(1)
+                            .then(function(user) {
+                                return user.email;
+                            });
+                    }
+                }
             })
 
             .otherwise('/inbox');

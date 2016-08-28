@@ -1,4 +1,4 @@
-<h1 ng-bind="'Inbox'"></h1>
+<h1 ng-bind="$ctrl.title"></h1>
 <table class="table table-striped table-hover">
     <thead>
         <tr>
@@ -20,6 +20,9 @@
             <td>
                 <button class="btn btn-default" ng-bind="'Eliminar'"></button>
             </td>
+        </tr>
+        <tr ng-if="$ctrl.emails.length < 1">
+            <td colspan="4" ng-bind="'No hay correos disponibles.'"></td>
         </tr>
     </tbody>
 </table>

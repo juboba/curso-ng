@@ -23,4 +23,25 @@ angular
                     return res.data;
                 });
         };
+
+        this.send = function(email) {
+            return $http({
+                url: 'http://localhost:8080/mail',
+                method: 'POST',
+                data: email
+            })
+                .then(function(res) {
+                    return res.data;
+                });
+        };
+
+        this.getAllSent = function() {
+            return $http({
+                url: 'http://localhost:8080/mail/sent',
+                method: 'GET'
+            })
+                .then(function(res) {
+                    return res.data;
+                });
+        }
     });

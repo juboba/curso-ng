@@ -3,8 +3,9 @@ const restify= require('restify');
 const server = restify.createServer();
 
 server.use(restify.CORS());
+server.use(restify.bodyParser());
 
-const mails = [];
+let mails = [];
 const users = [];
 
 for (let i = 0; i < 10; i++) {
@@ -40,26 +41,52 @@ users.forEach(
     }
 );
 
-server.get('/mail/:id', function(req, res) {
+server.get(/\/mail\/(\d+)/, function(req, res) {
+    let id = req.params[0];
+
     let mail = mails.find(function(item) {
-        return item.id === parseInt(req.params.id);
+        return item.id === parseInt(id);
     });
+
     res.send(mail);
 });
 
 server.get('/mail', function(req, res) {
-    res.send(mails);
+    res.send(mails.filter(function(item) {
+        return !item.sent;
+    }));
 });
 
 server.get('/user', function(req, res) {
     res.send(users);
 });
 
-server.get('/user/:id', function(req, res) {
+server.get(/\/user\/(\d+)/, function(req, res) {
+    let id = req.params[0];
     let user = users.find(function(item) {
-        return item.id === parseInt(req.params.id);
+        return item.id === parseInt(id);
     });
     res.send(user);
+});
+
+server.post('/mail', function(req, res) {
+    let newEmail = req.params;
+
+    newEmail.fecha = new Date();
+    newEmail.id = mails.length + 1;
+    newEmail.sent = true;
+    newEmail.user_id = users[0].id;
+    newEmail.remitente = users[0].nombres + ' ' + users[0].apellidos + ' <' + users[0].email + '>';
+
+    mails.push(newEmail);
+
+    res.send(newEmail);
+});
+
+server.get('/mail/sent', function(req, res) {
+    res.send(mails.filter(function(item) {
+        return item.sent;
+    }));
 });
 
 server.listen(8080, function() {
