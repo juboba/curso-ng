@@ -2,8 +2,6 @@
     <div class="row">
         <div class="col-sm-12">
             <b ng-bind="'Remitente'"></b>:
-            <!-- Agregamos un enlace al detalle del remitente:
-            -->
             <a ng-href="/#/user/{{$ctrl.mail.user_id}}">
                 <span ng-bind="$ctrl.mail.remitente"></span>
             </a>

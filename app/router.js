@@ -25,5 +25,9 @@ angular
                 }
             })
 
+            .when('/compose', {
+                template: '<cc-composer></cc-composer>'
+            })
+
             .otherwise('/inbox');
     });

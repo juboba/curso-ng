@@ -1,0 +1,43 @@
+<h1 ng-bind="'Nuevo correo'"></h1>
+
+<form name="mailForm" ng-submit="$ctrl.sendMail()">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3">
+                <b ng-bind="'De'"></b>
+            </div>
+            <div class="col-sm-9">
+                <input name="remitente" ng-model="$ctrl.newMail.remitente" disabled class="form-control" type="text" value=""/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <b ng-bind="'Para'"></b>
+            </div>
+            <div class="col-sm-9">
+                <input name="destinatario" ng-model="$ctrl.newMail.destinatario" class="form-control" type="text" value=""/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <b ng-bind="'Asunto'"></b>
+            </div>
+            <div class="col-sm-9">
+                <input name="asunto" ng-model="$ctrl.newMail.asunto" class="form-control" type="text" value=""/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <b ng-bind="'Contenido'"></b>
+            </div>
+            <div class="col-sm-9">
+                <textarea name="cuerpo" ng-model="$ctrl.newMail.cuerpo" class="form-control" cols="30" id="" name="" rows="10"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 text-right">
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </div>
+        </div>
+    </div>
+</form>
